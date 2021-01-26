@@ -7,15 +7,16 @@ const errorMsg=document.querySelector('#errorMsg')
 weatherForm.addEventListener('submit',(e)=>{
     e.preventDefault()
     const location=search.value
-    successMsg.textContent='Loading...'
-    errorMsg.textContent=''
+    messageOne.textContent='Loading...'
+    messageTwo.textContent=''
     
     fetch('/weather?address='+location).then((response)=>{
     response.json().then((data)=>{
         if(data.error)
-        errorMsg.textContent=data.error
+        messageOne.textContent=data.error
         else{
-            successMsg.textContent=data.location+' '+data.forecast
+            messageOne.textContent=data.location
+            messageTwo.textContent=data.forecast
             //console.log(data.forecast)
         }
     })
