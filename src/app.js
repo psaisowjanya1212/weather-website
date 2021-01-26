@@ -8,6 +8,7 @@ const forecast=require('./utils/forecast')
 const { resolve } = require('dns')
 
 const app=express()
+const port=process.env.PORT || 3000 //this is setting up port for heroku or default(3000) will run if its not available 
 
 //Define paths for express config
 const publicDirectoryPath=path.join(__dirname,'../public')//finding the path to connect to html page in different folder
@@ -99,6 +100,6 @@ app.get('*',(req,res)=>{
     })
 })
 
-app.listen(3000,()=>{
-    console.log("Server is up and running")
+app.listen(port,()=>{
+    console.log("Server is up and running "+port)
 })
